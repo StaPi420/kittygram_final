@@ -3,6 +3,7 @@
 volumes:
   pg_data:
   static:
+  media:
 
 services:
   db:
@@ -20,6 +21,8 @@ services:
       - db
   frontend:
     env_file: .env
+    ports:
+    - "3000:8000"
     build: ./frontend/
     command: cp -r /app/build/. /frontend_static/
     volumes:
